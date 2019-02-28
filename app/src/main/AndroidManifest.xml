@@ -24,12 +24,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".MobileServiceClient" />
-        <activity
-            android:name=".SelectCarActivity"
-            android:label="@string/title_activity_select_car"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
