@@ -159,7 +159,7 @@
             </RelativeLayout>
 
             <CheckBox
-                android:id="@+id/checkbox"
+                android:id="@+id/chkboxToS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relativeLayout3"
@@ -173,7 +173,7 @@
                 android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/checkbox"
+                android:layout_below="@id/chkboxToS"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.microsoft.windowsazure.mobileservices.*;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.btnLogin:
                 //signIn();
-              //  startActivity(new Intent(this, MainActivity.class));
+               // startActivity(new Intent(this, MainActivity.class));
                 break;
 
             case R.id.btnRegister:
