@@ -179,7 +179,7 @@
                 android:layout_marginRight="30dp"
                 android:text="SIGN UP"
                 android:textColor="#fff"
-                android:background="@color/pink"/>
+                android:background="@color/pink" />
 
             <Button
                 android:id="@+id/btnAlreadyHaveAcc"

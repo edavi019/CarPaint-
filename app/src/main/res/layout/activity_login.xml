@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f514"
     tools:context=".LoginActivity">
+<!--
+    android:background="#f514"
+-->
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -37,7 +39,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/circle"
                     android:padding="10dp"
-                    android:src="@drawable/ic_description_black_24dp"
+                    android:src="@drawable/ic_directions_car_black_24dp"
                     android:tint="#fff"/>
 
                 <TextView
@@ -156,6 +158,7 @@
                     android:background="@drawable/buttonstylepink"
                     android:drawableRight="@drawable/ic_send_black_24dp"
                     android:text="Login"
+                    android:onClick="OnLogin"
                     android:textColor="#fff" />
 
                 <Button
