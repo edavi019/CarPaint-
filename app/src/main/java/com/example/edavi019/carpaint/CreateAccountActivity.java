@@ -46,22 +46,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnSignUp:
-                RegUser regUser = new RegUser();
-                regUser.execute("");
-                startActivity(new Intent(this, MainActivity.class));
-                break;
-
-            case R.id.btnAlreadyHaveAcc:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
-        }
-
-    }
-
 
     @SuppressLint("StaticFieldLeak")
     public class RegUser extends AsyncTask<String, String, String> {
@@ -99,9 +83,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                         etPassword.setError("Minimum length of six characters is required");
                         etPassword.requestFocus();
                     }
-                   /* if (!password.equals(repassword)) {
+                    if (!password.equals(repassword)) {
                         etRePassword.setError("Passwords Did not Match");
-                    }*/
+                    }
 
                     Log.d("my email", email);
                     Log.d("my password", password);
@@ -160,5 +144,23 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         return connection;
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnSignUp:
+                RegUser regUser = new RegUser();
+                regUser.execute("");
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+
+            case R.id.btnAlreadyHaveAcc:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+        }
+
+    }
+
+
 }
 

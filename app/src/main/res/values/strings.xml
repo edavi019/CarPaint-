@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Carpaint</string>
     <string name="title_activity_select_car">SelectCarActivity</string>
+
+    <string-array name="makes">
+        <item>Acura</item>
+        <item>Honda</item>
+        <item>Ford</item>
+        <item>Jeep</item>
+    </string-array>
+    <string-array name="models">
+        <item> TL</item>
+    </string-array>
+    <string-array name="year">
+        <item>2013</item>
+    </string-array>
 </resources>
