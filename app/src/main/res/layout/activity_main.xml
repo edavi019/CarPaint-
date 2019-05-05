@@ -11,37 +11,38 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Year"
-        android:padding="8dip" />
 
         <!-- Spinner Dropdown -->
         <Spinner
-            android:id="@+id/spinYear"
+            android:id="@+id/sYear"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
             android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            />
+            android:layout_marginTop="20dip"
+            android:layout_marginRight="8dip" />
+
         <Spinner
-            android:id="@+id/spinMake"
+            android:id="@+id/sMake"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
             android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            />
+            android:layout_marginTop="20dip"
+            android:layout_marginRight="8dip"/>
+            <!--android:entries="@array/makes" -->
+
         <Spinner
-            android:id="@+id/spinModel"
+            android:id="@+id/sModel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
             android:layout_marginLeft="8dip"
+            android:layout_marginTop="20dip"
             android:layout_marginRight="8dip"
-            />
+             />
+
+        <Button
+            android:id="@+id/btnRun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </RelativeLayout>
