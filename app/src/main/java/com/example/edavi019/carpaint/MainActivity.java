@@ -125,8 +125,9 @@ public class MainActivity extends AppCompatActivity {
                         year.add(id1);
                         //Log.d("the year selected is ", String.valueOf(year));
                     }
-                    while (rs.next());
-                    {
+                    while (rs.next());{
+                        //This calls the function that populates Make Spinner with the Updated Query
+                        MakeData();
                         String[] array = year.toArray(new String[0]);
                         ArrayAdapter<String> yearAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, year);
                         //yearAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -141,10 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
 
             }
-            /*ArrayAdapter<String> yearAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, year);
-            yearAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-            syear.setAdapter(yearAdapter);*/
-            //syear.setSelection(0);
         }
 
         @Override
@@ -156,43 +153,7 @@ public class MainActivity extends AppCompatActivity {
     private AdapterView.OnItemSelectedListener make_listener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            String year1 = syear.getSelectedItem().toString();
-            //loadSpinnerMake();
-            Connection connection;
-            PreparedStatement preparedStatement;
-            ArrayList<String> make = new ArrayList<>();
-            try {
-                ConnectionHelper conn = new ConnectionHelper();
-                connection = conn.connectionclass();
-                //String makeQuery = "Select Distinct Make from CarDB Where Year = ?";
-                //preparedStatement = conn.connectionclass().prepareStatement(makeQuery);
-                //preparedStatement.setString(1,year1);
-                //preparedStatement.executeUpdate();
-                //ResultSet rs = preparedStatement.executeQuery();
-                String makeQuery = "Select Distinct Make from CarDB Where Year = " + year1;
-                Statement stm = connection.createStatement();
-                ResultSet rs = stm.executeQuery(makeQuery);
-                Log.d("first2", "loadSpinnerData: 2 ");
-                if (!rs.next()) {
-                    Log.d("nothings next", "Nothings in the Set ");
-                } else {
-                    do {
-                        String make1 = rs.getString("Make");
-                        make.add(make1);
-                        Log.d("the make selected is ", make1);
-                    }
-                    while (rs.next());
-                    String[] array = make.toArray(new String[0]);
-                    ArrayAdapter<String> makeAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, make);
-                    //makeAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                    //smake.setAdapter(makeAdapter);
-
-                }
-                ModelData();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            ModelData();
         }
 
         @Override
@@ -204,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
     private AdapterView.OnItemSelectedListener model_listener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            //ModelData();
+
 
         }
 
@@ -213,6 +174,49 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    private void MakeData(){
+        String year1 = syear.getSelectedItem().toString();
+        Connection connection;
+        PreparedStatement preparedStatement;
+        ArrayList<String> make = new ArrayList<>();
+        //This calls the Model with updaed query from the database
+        ModelData();
+        try {
+            ConnectionHelper conn = new ConnectionHelper();
+            connection = conn.connectionclass();
+            //String makeQuery = "Select Distinct Make from CarDB Where Year = ?";
+            //preparedStatement = conn.connectionclass().prepareStatement(makeQuery);
+            //preparedStatement.setString(1,year1);
+            //preparedStatement.executeUpdate();
+            //ResultSet rs = preparedStatement.executeQuery();
+            String makeQuery = "Select Distinct Make from CarDB Where Year = " + year1;
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(makeQuery);
+            Log.d("first2", "loadSpinnerData: 2 ");
+            if (!rs.next()) {
+                Log.d("nothings next", "Nothings in the Set ");
+            } else {
+                do {
+                    String make1 = rs.getString("Make");
+                    make.add(make1);
+                    Log.d("the make selected is ", make1);
+                }
+                while (rs.next());
+                String[] array = make.toArray(new String[0]);
+                ArrayAdapter<String> makeAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, make);
+                //makeAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                smake.setAdapter(makeAdapter);
+
+            }
+            //With ModelData here it only updated sometimes
+            //ModelData();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void ModelData(){
         String year1 = syear.getSelectedItem().toString();

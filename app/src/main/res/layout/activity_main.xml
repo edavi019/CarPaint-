@@ -6,20 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+'
+    <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please Select Your Vehicle Information"
+        android:textSize="18sp"
+        android:layout_margin="16dp"/>-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Please Select Your Vehicle Year"
+            android:textSize="18sp" />
 
-        <!-- Spinner Dropdown -->
         <Spinner
             android:id="@+id/sYear"
-            android:layout_width="fill_parent"
+            android:layout_width="393dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dip"
             android:layout_marginTop="20dip"
             android:layout_marginRight="8dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Please Select Your Vehicle Make"
+            android:textSize="18sp" />
 
         <Spinner
             android:id="@+id/sMake"
@@ -27,8 +47,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dip"
             android:layout_marginTop="20dip"
-            android:layout_marginRight="8dip"/>
-            <!--android:entries="@array/makes" -->
+            android:layout_marginRight="8dip" />
+        <!--android:entries="@array/makes" -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Please Select Your Vehicle Model"
+            android:textSize="18sp" />
 
         <Spinner
             android:id="@+id/sModel"
@@ -36,13 +63,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dip"
             android:layout_marginTop="20dip"
-            android:layout_marginRight="8dip"
-             />
+            android:layout_marginRight="8dip" />
 
         <Button
             android:id="@+id/btnRun"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit Vehicle Data"
+            android:background="@drawable/buttonstylepink"
+            android:textColor="#fff"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
-</RelativeLayout>
+    </RelativeLayout>
