@@ -19,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPassword;
@@ -30,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
 
@@ -38,9 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         loginprogress = findViewById(R.id.loginProgress);
 
         loginprogress.setVisibility(View.GONE);
-
-      /*  btnLogin.setOnClickListener(this);
-        btnRegister.setOnClickListener(this);*/
 
       btnLogin.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -64,23 +64,20 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-
     @SuppressLint("StaticFieldLeak")
     public class CheckLogin extends AsyncTask<String,String,String>{
         String z  = "";
         Boolean isSuccess = false;
+        Connection connect;
 
         @Override
         protected void onPreExecute() {
             loginprogress.setVisibility(View.VISIBLE);
-/*
-            super.onPreExecute();
-*/
         }
 
         @Override
         protected String doInBackground(String... strings) {
+
 
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
@@ -90,19 +87,20 @@ public class LoginActivity extends AppCompatActivity {
                 z = "Please enter username and password";
             }else{
                 try {
-                    Connection con = connectionclass();   //connect to database
-                    if(con == null){
+                    ConnectionHelper conn = new ConnectionHelper();
+                    connect = conn.connectionclass();
+                    if(connect == null){
                         z = "Check Your Internet Access!";
                 }else{
                         String query = "Select * from Usertest where email = " + email + "and password =" + password;
-                        Statement stm = con.createStatement();
+                        Statement stm = connect.createStatement();
                         Log.d("my email2", email);
                         Log.d("my password2", password);
                         ResultSet rs = stm.executeQuery(query);
                         if(rs.next()){
                             z = "Login Successful";
                             isSuccess = true;
-                            con.close();
+                            connect.close();
                         }else{
                             z = "Invalid Credentials";
                             isSuccess = false;
@@ -115,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             return z;
         }
+
         @Override
         protected void onPostExecute(String s) {
 
@@ -123,55 +122,5 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         }
-
     }
-
-
-    @SuppressLint({"NewApi", "AuthLeak"})
-    public Connection connectionclass(){
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-        String ConnectionURL;
-
-        try{
-
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            //database connection string below.
-            ConnectionURL = "jdbc:jtds:sqlserver://carpaints.database.windows.net:1433;DatabaseName=CarPaints;user=cp_server_admin@carpaints;password=Immunematerial5;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-            connection = DriverManager.getConnection(ConnectionURL);
-        }
-        catch (SQLException se){
-
-            Log.e("error here 1 : ", se.getMessage());
-        }
-        catch (ClassNotFoundException e){
-
-            Log.e("error here 2 : ", e.getMessage());
-        }
-        catch (Exception e){
-
-            Log.e("error here 3 : ", e.getMessage());
-        }
-        return connection;
-    }
-
-   /* @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            //Button Login
-            case R.id.btnLogin:
-                CheckLogin checkLogin = new CheckLogin();
-                checkLogin.execute("");
-                startActivity(new Intent(this, MainActivity.class));
-                break;
-
-            //Button Register
-            case R.id.btnRegister:
-                startActivity(new Intent(this, CreateAccountActivity.class));
-                break;
-        }
-
-    }*/
 }
