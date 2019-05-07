@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:id="@+id/Parentlayout">
+
+
+    <TextView
+        android:id="@+id/ColorName"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_toLeftOf="@+id/ColorCode"
+        android:gravity="fill"
+        android:text="Color Name"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/ColorCode"
+        android:layout_width="110dp"
+        android:layout_height="75dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="fill"
+        android:text="Color Code"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/ColorImage"
+        android:layout_width="110dp"
+        android:layout_height="75dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/ColorCode"
+        android:background="#FF512629"
+        android:gravity="right"
+        android:textAlignment="center" />
+
+
+</RelativeLayout>
