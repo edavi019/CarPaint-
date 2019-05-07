@@ -20,7 +20,6 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".results"></activity>
-        <activity android:name=".fetchdata" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
