@@ -13,69 +13,62 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> mColorImage = new ArrayList<>();
-    private ArrayList<String> mColorName = new ArrayList<>();
-    private ArrayList<String> mColorCode = new ArrayList<>();
-    private Context mContext;
+    private List<ResultLists> values;
+    public Context context;
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> mColorImage, ArrayList<String> mColorName, ArrayList<String> mColorCode) {
-        this.mColorImage = mColorImage;
-        this.mColorName = mColorName;
-        this.mColorCode = mColorCode;
-        this.mContext = mContext;
+    public class ViewHolder extends RecyclerView.ViewHolder{
+
+        public TextView ColorImage;
+        public TextView ColorName;
+        public TextView ColorCode;
+        public View layout;
+
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            layout = itemView;
+            ColorImage = itemView.findViewById(R.id.ColorImage);
+            ColorName = itemView.findViewById(R.id.ColorName);
+            ColorCode = itemView.findViewById(R.id.ColorCode);
+            //ParentLayout = itemView.findViewById(R.id.Parentlayout);
+        }
+    }
+
+        public RecyclerViewAdapter(List<ResultLists> myDataSet,Context context) {
+        values = myDataSet;
+        this.context = context;
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.resultsrowlayout, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v =inflater.inflate(R.layout.resultsrowlayout,parent,false);
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+        /*View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.resultsrowlayout, parent, false);
         ViewHolder holder = new ViewHolder(view);
-        return holder;
+        return holder;*/
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
+        final ResultLists resultLists = values.get(position);
+        holder.ColorName.setText(resultLists.getColorName());
+        holder.ColorCode.setText(resultLists.getColorCode());
+        holder.ColorImage.setBackgroundColor(Color.parseColor(resultLists.getHex()));
 
-        holder.ColorName.setText(mColorName.get(position));
-        holder.ColorCode.setText(mColorCode.get(position));
-        holder.ColorImage.setBackgroundColor(Color.parseColor(mColorImage.get(position)));
-
-        holder.ParentLayout.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Log.d(TAG, "onClick: clicked on: " + mColorName.get(position));
-
-                Toast.makeText(mContext, mColorName.get(position), Toast.LENGTH_SHORT).show();
-             }
-        } );
-           
-    }
-
+        }
     @Override
     public int getItemCount() {
-        return mColorName.size();
+        return values.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        TextView ColorImage;
-        TextView ColorName;
-        TextView ColorCode;
-        RelativeLayout ParentLayout;
-
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ColorImage = itemView.findViewById(R.id.ColorImage);
-            ColorName = itemView.findViewById(R.id.ColorName);
-            ColorCode = itemView.findViewById(R.id.ColorCode);
-            ParentLayout = itemView.findViewById(R.id.Parentlayout);
-        }
-    }
 }

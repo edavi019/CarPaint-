@@ -102,7 +102,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                             isSuccess = true;
                             con.close();
                         } else {
-
                             z = "Invalid Query!";
                             isSuccess = false;
                         }

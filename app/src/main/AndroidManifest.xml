@@ -18,9 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".results"></activity>
-        <activity android:name=".Main2Activity" />
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity android:name=".ResultActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

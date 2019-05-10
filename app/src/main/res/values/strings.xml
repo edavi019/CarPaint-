@@ -2,7 +2,7 @@
     <string name="app_name">Carpaint</string>
     <string name="title_activity_select_car">SelectCarActivity</string>
 
-<!--    <string-array name="makes">
+    <!--    <string-array name="makes">
         <item>Acura</item>
         <item>Honda</item>
         <item>Ford</item>

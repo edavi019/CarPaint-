@@ -22,6 +22,9 @@ public class results extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+/*        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         Log.d(TAG, "onCreate: started");
         initImageBitMaps();
@@ -71,5 +74,5 @@ public class results extends AppCompatActivity {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mColorImage, mColorName, mColorCode);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
+    }*/
 }
