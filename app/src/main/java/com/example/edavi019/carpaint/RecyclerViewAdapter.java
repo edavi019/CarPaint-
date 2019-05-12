@@ -61,9 +61,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
         final ResultLists resultLists = values.get(position);
+        Log.d("ColorName", String.valueOf(values));
         holder.ColorName.setText(resultLists.getColorName());
         holder.ColorCode.setText(resultLists.getColorCode());
-        holder.ColorImage.setBackgroundColor(Color.parseColor(resultLists.getHex()));
+        holder.ColorImage.setBackgroundColor(Color.parseColor('#' + resultLists.getHex()));
 
         }
     @Override

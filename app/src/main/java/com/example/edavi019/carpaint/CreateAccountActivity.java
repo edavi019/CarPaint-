@@ -159,7 +159,5 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         }
 
     }
-
-
 }
 

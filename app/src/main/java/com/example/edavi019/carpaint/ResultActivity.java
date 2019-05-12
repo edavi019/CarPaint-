@@ -1,11 +1,13 @@
 package com.example.edavi019.carpaint;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -21,6 +23,7 @@ public class ResultActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private boolean success = false;
     RecyclerView.LayoutManager mLayoutManager;
+    TextView tvYear,tvMake,tvModel;
 
 
 
@@ -40,10 +43,16 @@ public class ResultActivity extends AppCompatActivity {
         recyclerViewAdapter = new RecyclerViewAdapter(resultListsArrayList,ResultActivity.this);
         recyclerView.setAdapter(recyclerViewAdapter);
 
+
+        tvYear = findViewById(R.id.tvYear);
+        tvMake = findViewById(R.id.tvMake);
+        tvModel = findViewById(R.id.tvModel);
+
         SyncData orderData = new SyncData();
         orderData.execute("");
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class SyncData extends AsyncTask<String,String,String>{
 
         Bundle bundle = getIntent().getExtras();
@@ -103,6 +112,11 @@ public class ResultActivity extends AppCompatActivity {
             if(!success){
             }else{
                 try{
+
+                    tvYear.setText(year);
+                    tvMake.setText(make);
+                    tvModel.setText(model);
+
 
                     recyclerViewAdapter = new RecyclerViewAdapter(resultListsArrayList, ResultActivity.this);
                     recyclerView.setAdapter(recyclerViewAdapter);
